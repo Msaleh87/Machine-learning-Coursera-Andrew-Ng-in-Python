@@ -3,8 +3,8 @@ import matplotlib.pyplot as plt
 from scipy.io import loadmat
 
 ## First part of the HW ##
-# make sure to comment out this input part when you uncomment the second half and use the path where your data exist.
-path = r'C:\Users\OneDrive\Desktop\Data Science\ML\EX3\ex3data1'
+# make sure to comment out this input part when you uncomment the second half.
+path = r'C:\Users\mahmo\OneDrive\Desktop\Data Science\ML\EX3\ex3data1'
 
 data = loadmat(path)
 
@@ -70,9 +70,9 @@ def Gradient(theta,X,y, lambda_):
     grad = (1/m) *np.dot(np.transpose(X),(h-y)); #alpha is not included in this line or the next
     grad[1:,:] = grad[1:,:] + (lambda_/m)* theta[1:,:]
     return grad.flatten(); # you have to use .flatten, because the op.minimize takes only 1 dimentional vector not (m,1), but (m,)! If you are using method = 'TNC' then it doesn't matter if you add .flatten or not
-# you can find the source about this argumet at: https://stackoverflow.com/questions/8752169/matrices-are-not-aligned-error-python-scipy-fmin-bfgs
+# you can find the source about this argumet at: r'https://stackoverflow.com/questions/8752169/matrices-are-not-aligned-error-python-scipy-fmin-bfgs'
 
-
+y[y == 10] = 0
 import scipy.optimize as op
 def oneVsAll(X, y, num_labels):
 
@@ -100,6 +100,7 @@ def predict(X, all_thetas):
         p[i] = list(H[i]).index(np.amax(H[i])) # its easier to find the index in a list, therefore, since H is 5000 x 10. The index of the max of each row represent the number in the picture.
     return p, np.mean(p == y)
 
+
 r'''
 ## The second part of the exercise ##
 # make sure to comment the input from the first half, I marked it
@@ -120,7 +121,7 @@ y[y == 10] = 0
 weights = loadmat(r'C:\Users\mahmo\OneDrive\Desktop\Data Science\ML\EX3\ex3weights')
 theta1 , theta2 = weights['Theta1'] , weights['Theta2']
 theta2 = np.roll(theta2, 1, axis=0) # Apperantly this line is needed to put the thetas in the order that would work on python not the one from matlab. Simply this command do shift left or right, up or down based on the axis selected
-# you could read more about at: https://numpy.org/doc/stable/reference/generated/numpy.roll.html
+# you could read more about at: r'https://numpy.org/doc/stable/reference/generated/numpy.roll.html'
 
 def NN(X, theta1, theta2):
     z1 = np.dot(X,theta1.T)
@@ -133,30 +134,3 @@ def NN(X, theta1, theta2):
         p[i] = list(A2[i]).index(np.amax(A2[i]))
     return p, np.mean(p == y)
 '''
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
