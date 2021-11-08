@@ -3,14 +3,14 @@ import matplotlib.pyplot as plt
 from scipy.io import loadmat
 
 ## First part of the HW ##
-# make sure to comment out this input part when you uncomment the second half.
-path = r'C:\Users\mahmo\OneDrive\Desktop\Data Science\ML\EX3\ex3data1'
+# make sure to comment out this input part when you uncomment the second half and use the path where your data exist.
+path = r'C:\Users\OneDrive\Desktop\Data Science\ML\EX3\ex3data1'
 
 data = loadmat(path)
 
 # Try to understand the data, to see the dataset you are dealing with, it has X and y, already organized.
 for v in data.keys():
-    #print(v)
+    print(v)
 
 X, y = data['X'], data['y'] # X has 5000 x 400 and y is 5000 x 1
 m = X.shape[0] # = y.size
