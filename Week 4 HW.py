@@ -100,7 +100,7 @@ def predict(X, all_thetas):
         p[i] = list(H[i]).index(np.amax(H[i])) # its easier to find the index in a list, therefore, since H is 5000 x 10. The index of the max of each row represent the number in the picture.
     return p, np.mean(p == y)
 
-'''
+r'''
 ## The second part of the exercise ##
 # make sure to comment the input from the first half, I marked it
 path = r'C:\Users\mahmo\OneDrive\Desktop\Data Science\ML\EX3\ex3data1'
