@@ -4,7 +4,7 @@ from scipy.io import loadmat
 
 ## loading the data ##
 
-path = r'C:\Users\mahmo\OneDrive\Desktop\Data Science\ML\EX4\ex4data1'
+path = r'C:\Users\Data Science\ML\EX4\ex4data1'
 data = loadmat(path)
 
 for v in data.keys():
