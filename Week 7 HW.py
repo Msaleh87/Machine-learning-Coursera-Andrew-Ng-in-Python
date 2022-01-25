@@ -3,7 +3,7 @@ from scipy.io import loadmat
 import matplotlib.pyplot as plt
 
 
-#path = r'C:\Users\mahmo\OneDrive\Desktop\Data Science\ML\EX6\ex6data1.mat'
+#path = r'add your path\ex6data1.mat'
 '''
 data = loadmat(path)
 
@@ -45,7 +45,7 @@ def gaussianKernel(x1,x2,sigma):
     #sim=np.exp(-np.power(x1-x2, 2).sum()/(2*sigma**2))
     return sim
 
-#path = r'C:\Users\mahmo\OneDrive\Desktop\Data Science\ML\EX6\ex6data2'
+#path = r'add your path\ex6data2'
 '''
 data2 = loadmat(path)
 
@@ -69,7 +69,7 @@ plot_decision_regions(X=X,
                       legend=2)
 plt.show()
 '''
-path = r'C:\Users\mahmo\OneDrive\Desktop\Data Science\ML\EX6\ex6data3'
+path = r'add your path\ex6data3'
 data3 = loadmat(path)
 
 for i in data3.keys():
