@@ -6,7 +6,7 @@ import time
 
 # t = time.time()
 
-vocablist = np.genfromtxt(r'C:\Users\mahmo\OneDrive\Desktop\Data Science\ML\EX6\vocab.txt', dtype=object)
+vocablist = np.genfromtxt(r'add your path\vocab.txt', dtype=object)
 # np.genfromtxt, it loops through each line of the text file and store the data in the line according to dtype. default value of delimiter = None, meaning:
 # that the line is split along white spaces (including tabs) and that consecutive white spaces are considered as a single white space.
 # to understand better why we used dtype = 'object' check this link:
@@ -18,7 +18,7 @@ X_indcies = list(vocablist[:,0].astype(int))
 
 # elapsed = time.time() - t
 
-file = open(r'C:\Users\mahmo\OneDrive\Desktop\Data Science\ML\EX6\emailSample1.txt','r') # open this text file in the read mode
+file = open(r'add your path\emailSample1.txt','r') # open this text file in the read mode
 data = file.read() # if you put it inside the function ppEmail(), the function will run once fine. Then when it tries to read the file, it won't and this will mess up the function. Give it a try
 def ppEmail(data):
     #print(data)
@@ -81,7 +81,7 @@ def Feature(data):
 
 ## 2.3 SVM classifier ##
 from scipy.io import loadmat
-path = r'C:\Users\mahmo\OneDrive\Desktop\Data Science\ML\EX6\spamTrain.mat'
+path = r'add your path\spamTrain.mat'
 data2 = loadmat(path)
 
 for key in data2.keys():
@@ -93,7 +93,7 @@ H = model.predict(Xtrain)
 from sklearn.metrics import accuracy_score
 print(accuracy_score(H,ytrain)) # or print(np.mean(H == ytrain.ravel())) # about 99.825 on the training set
 
-path2 = r'C:\Users\mahmo\OneDrive\Desktop\Data Science\ML\EX6\spamTest.mat'
+path2 = r'add your path\spamTest.mat'
 dataTest = loadmat(path2)
 for key in dataTest.keys():
     print(key)
@@ -110,7 +110,7 @@ np.where(W > 0.45)[0] # the indicies are 297 and 1190 if X[297] = click.
 #Pretty sure that this most likely indicate scam if they ask you to click. Try np.where(W > 0.3) you will dinf that the dollar as well is an indicator
 
 print('#####################################################')
-Email = open(r'C:\Users\mahmo\OneDrive\Desktop\Data Science\ML\EX6\emailSample2.txt','r') # Try putting the path of the email you want to check
+Email = open(r'add your path\emailSample2.txt','r') # Try putting the path of the email you want to check
 Email_check = Email.read()
 X_feature = Feature(Email_check)
 print(' If the prediction is 1 then its spam, if it is not')
@@ -120,7 +120,7 @@ r'''
 ############################################
 ## How to read text files in a folder ##
 import os
-path = r'C:\Users\mahmo\OneDrive\Desktop\Data Science\ML\EX6\Email Samples\easy_ham'
+path = r'add your path\Email Samples\easy_ham'
 os.chdir(path)
 def RTF(file_path):
     with open(file_path, 'r') as f:
@@ -136,7 +136,7 @@ import os
 #############################################
 ## How to convert all the text file in a folder from spamassassin public corpus website into an X feature that we developed earlier ##
 r'''
-path = r'C:\Users\mahmo\OneDrive\Desktop\Data Science\ML\EX6\Email Samples\easy_ham'
+path = r'add your path\Email Samples\easy_ham'
 # Pick the directory you want
 os.chdir(path)
 
@@ -157,7 +157,7 @@ for file in os.listdir():
 #############################################
 ## How to read all the text files in the subfolders['easy_ham', 'easy_ham_2', 'hard_ham', 'spam', 'spam_2'] without putting them in one folder manually ##
 
-path_main = r'C:\Users\mahmo\OneDrive\Desktop\Data Science\ML\EX6\Email Samples'
+path_main = r'add your path\Email Samples' # put all the folders in one folder and add the path here
 os.chdir(path_main) # change the directory to path_main
 MP = os.listdir()  # see what's inside this directory: ['easy_ham', 'easy_ham_2', 'hard_ham', 'spam', 'spam_2']
 
