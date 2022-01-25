@@ -3,7 +3,7 @@ from scipy.io import loadmat
 import matplotlib.pyplot as plt
 #import scipy.io as scio # you could use this line but then you will have to change the data code line
 
-path = r'C:\Users\mahmo\OneDrive\Desktop\Data Science\ML\EX5\ex5data1'
+path = r'add your path\ex5data1'
 data = loadmat(path)
 #data = scio.loadmat(path) # in case you use the commented import command.
 
