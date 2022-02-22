@@ -30,7 +30,7 @@ def findClosestCentroids(X,centroids):
         distanceBetSmaplesCentroids[:,j]=np.sqrt(np.sum((X - centroids[j])**2,axis=1)) # Meaning distanceBetSmaplesCentroids[:,0] = distance between each sample in X and centroid[0]
     idx = np.argmin(distanceBetSmaplesCentroids,axis=1) # now find the shortest distance in each row, which crossponds to the shortest distance to the cluster k in column k
     sumOfShortestDists = np.sum(np.min(distanceBetSmaplesCentroids,axis=1))
-    return idx.reshape(X.shape[0],1), distanceBetSmaplesCentroids, sumOfShortestDists
+    return idx.reshape(X.shape[0],1), distanceBetSmaplesCentroids, sumOfShortestDists # sumOfShortestDists could represent the cost function,
 
 r'''
 # Same function but using for loops, takes longer time to excute #
@@ -121,34 +121,36 @@ A = mlp.pyplot.imread(r'your_pic.PNG') # add your pic
 #A = mlp.pyplot.imread(r'C:\Users\mahmo\OneDrive\Desktop\Data Science\ML\EX7\bird_small.png')
 K = 6
 # scale the features to be between 0-1
-A = A / 255
-X = A.reshape(-1,A.shape[-1])
-J = [10000000000000]
-iterations = 5
+A = A / 255 # this feature scaling for the picture, since 0 is black and 255 is white, we could make all the colors between 0 and 1 by dividing by 255
+X = A.reshape(-1,A.shape[-1]) 
+J = [10000000000000] # I made it huge so that when you compare to it in the for loop, any other values could replace it
+## putting the K-mean algorithm together ##
+iterations = 5 # it depends how many iteration you want to go through
 for i in range(iterations): # iterations will be a variable for us to set, it indicates how many times it should do the 2 main steps(assign Ci and update Uk) in the K-mean algorithm
-    I_C = kMeansInitCentroids(X, K)
-    print(I_C)
+    I_C = kMeansInitCentroids(X, K) # intialize the centroids
+    # print(I_C)
     idx = findClosestCentroids(X,I_C)[0] # idx is like C(i). In other words, idx represents to which a specific exmaple Xi belongs to a specific cluster k
     #centroids1 = computeCentroids1(X,idx,K)
     J.append(findClosestCentroids(X,I_C)[2])
     #print(J)
-    if J[i+1] <= min(J):
+    # only if the cost function is less than the one just computed, you compute the centroids, so that u don't waste processing power!
+    if J[i+1] <= min(J): # now in the first iteration J[1] for sure <= minimum of J
         print(J[i+1])
         centroids = computeCentroids1(X,idx,K) # after the assigments of all Xi to C(i) (a cluster). Compute the mean of the cluster
     print(i)
     print('#################################################')
     #print(idx)
     #print(centroids)
+## Mapping the picture with the new colors/centroids picked up from the previous section ##
 X_recovered = np.zeros((X.shape))
 #X_recovered1 = np.zeros((X.shape))
 for i in range(idx.shape[0]):
     for j in range(K):
         if idx[i] == j:
             X_recovered[i] = centroids[j]
-            #X_recovered1[i] = centroids1[j]
 X_recovered = X_recovered.reshape(A.shape)
-#X_recovered1 = X_recovered1.reshape(A.shape)
 
+## plotting the original picture and reduced one ##
 fig, ax = pyplot.subplots(1,2, figsize = (8,4))
 ax[0].imshow((A*255))
 #ax[0] = set_title('org')
